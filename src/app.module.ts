@@ -8,9 +8,10 @@ import { PostsModule } from './posts/posts.module';
 import { FirebaseModule } from './firebase/firebase.module';
 import { LikesModule } from './likes/likes.module';
 import { CommentsModule } from './comments/comments.module';
+import { RepliesModule } from './replies/replies.module';
 
 @Module({
-  imports: [AuthModule, PostsModule, FirebaseModule, LikesModule, CommentsModule],
+  imports: [AuthModule, PostsModule, FirebaseModule, LikesModule, CommentsModule, RepliesModule],
   controllers: [ UserController],
   providers: [ UserService],
 })
