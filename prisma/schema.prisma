@@ -21,6 +21,7 @@ model User {
   posts    Post[]
   comments Comment[]
   likes    Like[]
+  replies  Reply[]
 }
 
 model Post {
@@ -41,6 +42,7 @@ model Comment {
   userId    Int
   post      Post     @relation(fields: [postId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
+  replies Reply[]
 }
 
 model Like {
@@ -50,4 +52,14 @@ model Like {
   post    Post   @relation(fields: [postId], references: [id])
   user    User   @relation(fields: [userId], references: [id])
   @@unique([postId, userId])
+}
+
+model Reply{
+  id        Int      @id @default(autoincrement())
+  content   String
+  commentId Int
+  userId    Int
+  comment   Comment  @relation(fields: [commentId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }
